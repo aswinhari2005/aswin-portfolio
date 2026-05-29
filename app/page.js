@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 
 export default function Portfolio() {
+
   const [loading, setLoading] = useState(true);
   const [selectedProject, setSelectedProject] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,12 +42,14 @@ export default function Portfolio() {
 
   // Particle Init
   const particlesInit = async (engine) => {
-  await loadSlim(engine);
-};
+    await loadSlim(engine);
+  };
 
   // Scroll Progress
   useEffect(() => {
+
     const updateScroll = () => {
+
       const current =
         window.scrollY /
         (document.body.scrollHeight - window.innerHeight);
@@ -59,10 +62,12 @@ export default function Portfolio() {
     return () => {
       window.removeEventListener("scroll", updateScroll);
     };
+
   }, []);
 
   // Cursor Movement
   useEffect(() => {
+
     const moveCursor = (e) => {
       cursorX.set(e.clientX - 16);
       cursorY.set(e.clientY - 16);
@@ -73,43 +78,113 @@ export default function Portfolio() {
     return () => {
       window.removeEventListener("mousemove", moveCursor);
     };
+
   }, [cursorX, cursorY]);
 
   // Loading Screen
   useEffect(() => {
+
     const timer = setTimeout(() => {
       setLoading(false);
     }, 3500);
 
     return () => clearTimeout(timer);
+
   }, []);
 
+  // Projects
   const projects = [
+
+    {
+      title: "Customer Behavior Prediction System",
+
+      description:
+        "Developed an advanced customer buying behavior prediction system using Apache PySpark and Multilayer Perceptron neural networks.",
+
+      details: `
+Built a scalable machine learning pipeline capable of analyzing customer purchasing patterns with exceptionally high prediction accuracy.
+
+Implemented end-to-end workflows including data preprocessing, feature engineering, model training, evaluation, and deployment.
+
+Integrated interactive analytical dashboards and visualization systems to generate customer insights and business intelligence.
+      `,
+
+      tech: [
+        "PySpark",
+        "Machine Learning",
+        "Neural Networks",
+        "Apache Spark",
+        "Graphviz",
+      ],
+    },
+
+    {
+      title: "RFID Smart Attendance System",
+
+      description:
+        "Designed and developed an IoT-based attendance management system using RFID and Arduino technologies.",
+
+      details: `
+Created an automated attendance solution capable of identifying users through RFID-enabled ID cards.
+
+Combined embedded systems, sensors, and microcontroller programming to improve efficiency and reduce manual attendance tracking.
+      `,
+
+      tech: [
+        "Arduino",
+        "RFID",
+        "IoT",
+        "Embedded Systems",
+      ],
+    },
+
     {
       title: "Object Detection System",
+
       description:
-        "Real-time object detection desktop application using Python and computer vision.",
-      tech: ["Python", "Tkinter", "OpenCV"],
+        "Real-time object detection application powered by Python and computer vision technologies.",
+
+      details: `
+Developed an interactive desktop-based object detection system with image processing and real-time visualization capabilities.
+
+Focused on detection accuracy, user interaction, and optimized performance using OpenCV and Python.
+      `,
+
+      tech: [
+        "Python",
+        "OpenCV",
+        "Tkinter",
+        "Computer Vision",
+      ],
     },
 
     {
-      title: "Fashion Product Classifier",
+      title: "VulnScan Security Analyzer",
+
       description:
-        "Machine learning based fashion image classification system.",
-      tech: ["Python", "TensorFlow", "ML"],
+        "Built a cybersecurity vulnerability assessment tool based on OWASP Top 10 security principles.",
+
+      details: `
+Designed a website vulnerability testing solution capable of identifying common web security weaknesses and misconfigurations.
+
+Focused on cybersecurity analysis, vulnerability discovery, and security assessment methodologies.
+      `,
+
+      tech: [
+        "Cybersecurity",
+        "OWASP",
+        "Python",
+        "Security Testing",
+      ],
     },
 
-    {
-      title: "Backend Web Platform",
-      description:
-        "Modern Django backend with authentication and REST APIs.",
-      tech: ["Django", "REST API", "MySQL"],
-    },
   ];
 
-  // Loader
+  // Loading Screen
   if (loading) {
+
     return (
+
       <div className="h-screen bg-black flex items-center justify-center overflow-hidden relative">
 
         <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(0,255,200,0.15),_transparent_60%)]"></div>
@@ -119,6 +194,7 @@ export default function Portfolio() {
           animate={{ opacity: 1 }}
           className="relative z-10 text-left font-mono text-green-400 text-lg"
         >
+
           <TypeAnimation
             sequence={[
               "> booting neural interface...",
@@ -127,7 +203,7 @@ export default function Portfolio() {
               700,
               "> decrypting assets...",
               700,
-              "> initializing portfolio.exe...",
+              "> opening aswin's portfolio...",
               700,
               "> access granted",
               1000,
@@ -137,12 +213,16 @@ export default function Portfolio() {
             repeat={0}
             cursor={true}
           />
+
         </motion.div>
+
       </div>
+
     );
   }
 
   return (
+
     <div className="min-h-screen bg-black text-white overflow-hidden relative cursor-none">
 
       {/* Scroll Progress */}
@@ -237,10 +317,6 @@ export default function Portfolio() {
               Projects
             </a>
 
-            <a href="#terminal" className="hover:text-cyan-400 transition">
-              Terminal
-            </a>
-
             <a href="#contact" className="hover:text-cyan-400 transition">
               Contact
             </a>
@@ -255,6 +331,7 @@ export default function Portfolio() {
           </button>
 
         </div>
+
       </nav>
 
       {/* Main Content */}
@@ -271,13 +348,13 @@ export default function Portfolio() {
           >
 
             <span className="text-white">
-              ASWIN
+              ASWIN HARI A
             </span>
 
             <br />
 
             <span className="text-cyan-400">
-              CYBERPUNK DEVELOPER
+              TECH ENTHUSIAST
             </span>
 
           </motion.h1>
@@ -290,9 +367,9 @@ export default function Portfolio() {
                 1000,
                 "Cybersecurity Enthusiast",
                 1000,
-                "Creative Technologist",
+                "AI & ML Explorer",
                 1000,
-                "Future Founder",
+                "Creative Technologist",
                 1000,
               ]}
               speed={50}
@@ -301,10 +378,12 @@ export default function Portfolio() {
 
           </div>
 
-          <p className="max-w-2xl text-gray-400 text-lg leading-relaxed">
-            BCA graduate passionate about backend systems,
-            cybersecurity, futuristic interfaces, and building
-            modern digital experiences.
+          <p className="max-w-3xl text-gray-400 text-lg leading-relaxed">
+            Graduated with a Bachelor of Computer Applications (BCA)
+            degree from Yenepoya University, Bangalore in 2026.
+            Passionate about backend systems, artificial intelligence,
+            cybersecurity, and modern software technologies with a strong
+            interest in building impactful digital solutions.
           </p>
 
         </section>
@@ -316,7 +395,7 @@ export default function Portfolio() {
             PROJECTS
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
 
             {projects.map((project, index) => (
 
@@ -360,39 +439,6 @@ export default function Portfolio() {
 
         </section>
 
-        {/* Terminal */}
-        <section id="terminal" className="py-32">
-
-          <div className="bg-black border border-green-500/20 rounded-3xl p-8 font-mono">
-
-            <div className="flex gap-2 mb-6">
-
-              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-
-            </div>
-
-            <TypeAnimation
-              sequence={[
-                "sudo initialize_aswin.exe",
-                1000,
-                "loading backend systems...",
-                1000,
-                "running cybersecurity protocols...",
-                1000,
-                "portfolio deployed successfully.",
-                1000,
-              ]}
-              speed={70}
-              repeat={Infinity}
-              className="text-green-400 text-lg"
-            />
-
-          </div>
-
-        </section>
-
         {/* GitHub */}
         <section className="py-32">
 
@@ -404,12 +450,20 @@ export default function Portfolio() {
 
             <div className="text-cyan-400 text-5xl mb-6">
               ⚡
-              </div>
+            </div>
 
-            <p className="text-gray-400 text-lg">
-              Connect your GitHub profile here later to display
-              repositories, contribution stats, and live activity.
+            <p className="text-gray-400 text-lg mb-4">
+              Explore my development projects, repositories,
+              and technical experiments on GitHub.
             </p>
+
+            <a
+              href="https://github.com/aswinhari2005"
+              target="_blank"
+              className="text-cyan-400 hover:text-cyan-300 transition"
+            >
+              github.com/aswinhari2005
+            </a>
 
           </div>
 
@@ -424,11 +478,21 @@ export default function Portfolio() {
 
           <div className="space-y-4 text-lg text-gray-400">
 
-            <p>Email: yourmail@example.com</p>
+            <p>Phone : 7558839548</p>
 
-            <p>GitHub: github.com/yourgithub</p>
+            <p>Email : aswinhariofficial@gmail.com</p>
 
-            <p>LinkedIn: linkedin.com/in/yourprofile</p>
+            <p>
+              LinkedIn :
+              {" "}
+              <a
+                href="https://www.linkedin.com/in/aswinhari"
+                target="_blank"
+                className="text-cyan-400 hover:text-cyan-300 transition"
+              >
+                linkedin.com/in/aswinhari
+              </a>
+            </p>
 
           </div>
 
@@ -436,7 +500,7 @@ export default function Portfolio() {
 
       </div>
 
-      {/* Project Modal */}
+      {/* Modal */}
       <AnimatePresence>
 
         {selectedProject && (
@@ -468,6 +532,10 @@ export default function Portfolio() {
 
               <p className="text-gray-400 mb-6">
                 {selectedProject.description}
+              </p>
+
+              <p className="text-gray-500 whitespace-pre-line leading-relaxed mb-6">
+                {selectedProject.details}
               </p>
 
               <div className="flex flex-wrap gap-2">

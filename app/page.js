@@ -8,8 +8,8 @@ import {
   AnimatePresence,
 } from "framer-motion";
 
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
+import Particles from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 import { TypeAnimation } from "react-type-animation";
 
@@ -40,9 +40,9 @@ export default function Portfolio() {
   });
 
   // Particle Init
-  const particlesInit = async (main) => {
-    await loadFull(main);
-  };
+  const particlesInit = async (engine) => {
+  await loadSlim(engine);
+};
 
   // Scroll Progress
   useEffect(() => {
